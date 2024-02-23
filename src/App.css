@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34;
+}
+
+.user-card{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 20px 50px;
+  padding: 20px;
+  height: 400px;
+  width: 300px;
+  border-radius: 20px;
+  background-color: rgb(209, 214, 219);
+}
+
+.refresh-btn{
+  border: none;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}

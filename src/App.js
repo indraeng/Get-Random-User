@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import UserCard from './components/UserCard';
+import { useEffect, useState } from 'react';
+import { getRandomUser } from './api';
 
 function App() {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    getRandomUser().then((data) => {
+      setUserData(data.results[0]);
+      // console.log(data);
+    })
+  }, []);
+
+  // console.log(getRandomUser());
+
+  const refresh = () => {
+    getRandomUser().then((data) => {
+      setUserData(data.results[0]);
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>This is a random user card</h1>
+      {userData && <UserCard data={userData} />}
+      <button onClick={refresh} className='refresh-btn' >Refresh</button>
     </div>
   );
 }
